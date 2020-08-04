@@ -1,7 +1,5 @@
 #include <iostream>
 #include <limits>
-#include <process.h>
-#include <iomanip>
 #include <cmath>
 
         long double degrees, radians, result;
