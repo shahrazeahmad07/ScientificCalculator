@@ -5,6 +5,7 @@
 #include <cmath>
 
             long double degrees, radians, result;
+            long double const e = 2.71828;
 
 
 long double sum (long double a, long double b)
@@ -559,8 +560,10 @@ Trigonometric:
         LogInvalid:
         cout << endl << endl;
         cout << "               1 : Natural log or log e" << endl;
-        cout << "               2 : Base 10 log or log 10" << endl;
-        cout << "               3 : Return to main menu" << endl << endl;
+        cout << "               2 : Antilog with base e" << endl;
+        cout << "               3 : Base 10 log or log 10" << endl;
+        cout << "               4 : Antilog with base 10" << endl;
+        cout << "               5 : Return to main menu" << endl << endl;
         cout << "Choose an option: ";
         int logoption;
         if (!(cin >> logoption))
@@ -599,8 +602,30 @@ Trigonometric:
             goto mainMenu;
 
 
-        //////////////////// Base 10 Log /////////////////
+        //////////////////// Antilog with base e /////////////
         case 2:
+            cout << "Enter value: ";
+            long double antiLogValue;
+            antiLogeSmall:
+            while (!(cin >> antiLogValue))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (antiLogValue<0)
+            {
+                cout << "Value Must be greater than 0. Enter again: ";
+                goto antiLogeSmall;
+            }
+            result = pow(e, antiLogValue);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        //////////////////// Base 10 Log /////////////////
+        case 3:
             logInput;
             cout << "Enter value: ";
             logBaseSmallInput:
@@ -625,8 +650,29 @@ Trigonometric:
             goto mainMenu;
 
 
+
+        /////////////// Base 10 Antilog ////////////////////////
+        case 4:
+            cout << "Enter value: ";
+            antiLog10Small:
+            while (!(cin >> antiLogValue))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (antiLogValue<0)
+            {
+                cout << "Value Must be greater than 0. Enter again: ";
+                goto antiLog10Small;
+            }
+            result = pow(10, antiLogValue);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
         /////////////// Log Return to main Menu //////////////////////
-        case 3:
+        case 5:
             goto mainMenu;
 
 
@@ -636,6 +682,7 @@ Trigonometric:
             goto LogInvalid;
 
         }
+        
 
 
     /////////////// Exit ////////////////
