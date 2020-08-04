@@ -306,11 +306,17 @@ Trigonometric:
         //////////////////// Sin-1 /////////////////
         case 4:
             cout << "Enter value. to find sin-1: ";
+            sinInverseValue:
             while (!(cin >> radians))
             {
                 cout << "Must be a no. Enter again: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>:: max(), '\n');
+            }
+            if (radians > 1)
+            {
+                cout << "Invalid value. The value must be in between 0 and 1. Enter again: ";
+                goto sinInverseValue;
             }
             result = (asin(radians)) /0.0174533;
             cout << "Result: " << result;
@@ -320,25 +326,38 @@ Trigonometric:
         //////////////////// Cos-1 /////////////////
         case 5:
             cout << "Enter value. to find cos-1: ";
+            cosInverseValue:
             while (!(cin >> radians))
             {
                 cout << "Must be a no. Enter again: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>:: max(), '\n');
             }
+            if (radians > 1)
+            {
+                cout << "Invalid value. The value must be in between 0 and 1. Enter again: ";
+                goto cosInverseValue;
+            }
             result = (acos(radians)) /0.0174533;
             cout << "Result: " << result;
             goto mainMenu;
+            
 
 
         //////////////////// Tan-1 /////////////////
         case 6:
             cout << "Enter value. to find tan-1: ";
+            tanInverseValue:
             while (!(cin >> radians))
             {
                 cout << "Must be a no. Enter again: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>:: max(), '\n');
+            }
+            if (radians > 1)
+            {
+                cout << "Invalid value. The value must be in between 0 and 1. Enter again: ";
+                goto tanInverseValue;
             }
             result = (atan(radians)) /0.0174533;
             cout << "Result: " << result;
