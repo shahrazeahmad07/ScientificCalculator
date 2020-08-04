@@ -770,6 +770,25 @@ Trigonometric:
                 goto mainMenu;
             }
 
+        ////////////////// Square root ///////////////////
+        case 4:
+            cout << "Enter base no: ";
+            negativeRadicle:
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (base < 0)
+            {
+                cout << "Invalid Base. Must be a positive number. Enter again: ";
+                goto negativeRadicle;
+            }
+            result = sqrt(base);
+            cout << "Result: " << result;
+            goto mainMenu;
+
         ////////////////// Power Return to main Menu ///////////////
         case 6:
             goto mainMenu;
