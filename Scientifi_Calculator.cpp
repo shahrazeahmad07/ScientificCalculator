@@ -556,19 +556,19 @@ Trigonometric:
 
     /////////////// Log /////////////////
     case 3:
+        LogInvalid:
         cout << endl << endl;
         cout << "               1 : Natural log or log e" << endl;
         cout << "               2 : Base 10 log or log 10" << endl;
         cout << "               3 : Return to main menu" << endl << endl;
         cout << "Choose an option: ";
         int logoption;
-        logOptionInput:
         if (!(cin >> logoption))
             {
                 cout << "Invalid option. Choose again: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                goto logOptionInput;
+                goto LogInvalid;
             }
         switch (logoption)
         {
@@ -598,6 +598,42 @@ Trigonometric:
             cout << "Result: " << result;
             goto mainMenu;
 
+
+        //////////////////// Base 10 Log /////////////////
+        case 2:
+            logInput;
+            cout << "Enter value: ";
+            logBaseSmallInput:
+            while (!(cin >> logInput))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (logInput < 0)
+            {
+                cout << "Value must be greater than 0. Input again: ";
+                goto logBaseSmallInput;
+            }
+            if (logInput == 0)
+            {
+                cout << "Undefined";
+                goto mainMenu;
+            }
+            result = log10(logInput);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        /////////////// Log Return to main Menu //////////////////////
+        case 3:
+            goto mainMenu;
+
+
+        /////////////// Log Invalid Input ///////////////////////
+        default:
+            cout << "Invalid Input. Choose again: ";
+            goto LogInvalid;
 
         }
 
