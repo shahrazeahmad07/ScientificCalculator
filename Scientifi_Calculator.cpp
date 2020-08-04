@@ -687,30 +687,100 @@ Trigonometric:
 
     /////////////// Power ///////////////
     case 4:
+        powerMenu:
         cout << endl << endl;
+        cout << "               1 : Square" << endl;
+        cout << "               2 : Cube" << endl;
+        cout << "               3 : Any Power" << endl;
+        cout << "               4 : Square Root" << endl;
+        cout << "               5 : Cube root" << endl;
+        cout << "               6 : Return to main menu" << endl << endl;
+        cout << "Choose an option: ";
         long double power, base;
-        cout << "Enter base no: ";
-        while (!(cin >> base))
+        int powerOption;
+        if (!(cin >> powerOption))
         {
-            cout << "Must be in numbers. Enter again: ";
+            cout << "Invalid Option. Select again: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            goto powerMenu;
         }
-        cout << "Enter power: ";
-        while (!(cin >> power))
+        switch (powerOption)
         {
-            cout << "Must be in numbers. Enter again: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        ///////////////////// Square ///////////////////
+        case 1:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = pow(base, 2);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        //////////////////// Cube /////////////////////
+        case 2:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = pow(base, 3);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ///////////////////// Any Power ////////////////////
+        case 3:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            cout << "Enter power: ";
+            while (!(cin >> power))
+            {
+                cout << "Must be in no. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (power == 0)
+            {
+                power = 1;
+                base = 1;
+                result = pow(base,power);
+                cout << "Result: " << result;
+                goto mainMenu;
+            }
+            else
+            {
+                long int anyPower;
+                anyPower = (long int) power;
+                result = pow(base,anyPower);
+                cout << "Result: " << result;
+                goto mainMenu;
+            }
+
+        ////////////////// Power Return to main Menu ///////////////
+        case 6:
+            goto mainMenu;
+
+
+        ////////////////// Invalid Selection /////////////////////
+        default:
+            cout << "Invalid Selection. Select again: ";
+            goto powerMenu;
+
         }
-        if (power == 0)
-        {
-            power = 1;
-            base = 1;
-        }
-        result = pow(base,power);
-        cout << "Result: " << result;
-        goto mainMenu;
 
 
     /////////////// Exit ////////////////
