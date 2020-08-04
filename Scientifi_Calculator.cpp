@@ -553,6 +553,55 @@ Trigonometric:
         }
 
 
+
+    /////////////// Log /////////////////
+    case 3:
+        cout << endl << endl;
+        cout << "               1 : Natural log or log e" << endl;
+        cout << "               2 : Base 10 log or log 10" << endl;
+        cout << "               3 : Return to main menu" << endl << endl;
+        cout << "Choose an option: ";
+        int logoption;
+        logOptionInput:
+        if (!(cin >> logoption))
+            {
+                cout << "Invalid option. Choose again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                goto logOptionInput;
+            }
+        switch (logoption)
+        {
+
+        /////////////////// Natural Log ///////////////
+        case 1:
+            long double logInput;
+            cout << "Enter value: ";
+            logSmallInput:
+            while (!(cin >> logInput))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (logInput < 0)
+            {
+                cout << "Value must be greater than 0. Input again: ";
+                goto logSmallInput;
+            }
+            if (logInput == 0)
+            {
+                cout << "Undefined";
+                goto mainMenu;
+            }
+            result = log(logInput);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        }
+
+
     /////////////// Exit ////////////////
     case 5:
         exit (0);
