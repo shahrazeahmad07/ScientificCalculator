@@ -430,9 +430,114 @@ Trigonometric:
                 goto mainMenu;
             }
 
-        /////////////////// Sinh() ////////////////////////////
+
+        /////////////////// Sinh() ///////////////////////
         case 10:
-            cout << "Enter degrees: ";
+            cout << "Enter Degrees: ";
+            sinhInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto sinhInput;
+            }
+            radians = radconvert(degrees);
+            result = sinh (degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Cosh() ///////////////////////
+        case 11:
+            cout << "Enter Degrees: ";
+            coshInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto coshInput;
+            }
+            radians = radconvert(degrees);
+            result = cosh(degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Tanh() ///////////////////////
+        case 12:
+            cout << "Enter Degrees: ";
+            tanhInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto tanhInput;
+            }
+            radians = radconvert(degrees);
+            result = tanh(degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        ////////////////// Sinh-1() ///////////////////////
+        case 13:
+            cout << "Enter value to find sinh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = asinh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Cosh-1() ///////////////////////
+        case 14:
+            cout << "Enter value to find cosh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = acosh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Tanh-1() ///////////////////////
+        case 15:
+            cout << "Enter value to find tanh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = atanh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
 
 
         /////////////////// Return to main Menu //////////////////
