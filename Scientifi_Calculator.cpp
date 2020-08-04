@@ -428,9 +428,14 @@ Trigonometric:
                 cout << "Result: " << result;
                 goto mainMenu;
             }
-            else
+            else if (degrees == 0 || degrees == 180)
             {
                 cout << "Result: Infinity";
+                goto mainMenu;
+            }
+            else if (degrees == 90 || degrees == 270)
+            {
+                cout << "Result: Undefined";
                 goto mainMenu;
             }
 
