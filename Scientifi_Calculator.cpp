@@ -430,7 +430,9 @@ Trigonometric:
                 goto mainMenu;
             }
 
-
+        /////////////////// Sinh() ////////////////////////////
+        case 10:
+            cout << "Enter degrees: ";
 
 
         /////////////////// Return to main Menu //////////////////
