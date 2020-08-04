@@ -1,10 +1,9 @@
 #include <iostream>
 #include <limits>
-#include <process.h>
-#include <iomanip>
 #include <cmath>
 
-            long double degrees, radians, result;
+        long double degrees, radians, result;
+        long double const e = 2.71828;
 
 
 long double sum (long double a, long double b)
@@ -431,6 +430,113 @@ Trigonometric:
             }
 
 
+        /////////////////// Sinh() ///////////////////////
+        case 10:
+            cout << "Enter Degrees: ";
+            sinhInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto sinhInput;
+            }
+            radians = radconvert(degrees);
+            result = sinh (degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Cosh() ///////////////////////
+        case 11:
+            cout << "Enter Degrees: ";
+            coshInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto coshInput;
+            }
+            radians = radconvert(degrees);
+            result = cosh(degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Tanh() ///////////////////////
+        case 12:
+            cout << "Enter Degrees: ";
+            tanhInput:
+            while (!(cin >> degrees))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (degrees > 360)
+            {
+                cout << "Degrees must be from 0 to 360, Enter again: ";
+                goto tanhInput;
+            }
+            radians = radconvert(degrees);
+            result = tanh(degrees);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        ////////////////// Sinh-1() ///////////////////////
+        case 13:
+            cout << "Enter value to find sinh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = asinh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Cosh-1() ///////////////////////
+        case 14:
+            cout << "Enter value to find cosh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = acosh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Tanh-1() ///////////////////////
+        case 15:
+            cout << "Enter value to find tanh-1(): ";
+            while (!(cin >> radians))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = atanh(radians);
+            cout << "Result: " << result;
+            goto mainMenu;
 
 
         /////////////////// Return to main Menu //////////////////
@@ -443,6 +549,276 @@ Trigonometric:
         default:
             cout << "Invalid Selection. Select Again: ";
             goto Trigonometric;
+        }
+
+
+
+    /////////////// Log /////////////////
+    case 3:
+        LogInvalid:
+        cout << endl << endl;
+        cout << "               1 : Natural log or log e" << endl;
+        cout << "               2 : Antilog with base e" << endl;
+        cout << "               3 : Base 10 log or log 10" << endl;
+        cout << "               4 : Antilog with base 10" << endl;
+        cout << "               5 : Return to main menu" << endl << endl;
+        cout << "Choose an option: ";
+        int logoption;
+        if (!(cin >> logoption))
+            {
+                cout << "Invalid option. Choose again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                goto LogInvalid;
+            }
+        switch (logoption)
+        {
+
+        /////////////////// Natural Log ///////////////
+        case 1:
+            long double logInput;
+            cout << "Enter value: ";
+            logSmallInput:
+            while (!(cin >> logInput))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (logInput < 0)
+            {
+                cout << "Value must be greater than 0. Input again: ";
+                goto logSmallInput;
+            }
+            if (logInput == 0)
+            {
+                cout << "Undefined";
+                goto mainMenu;
+            }
+            result = log(logInput);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        //////////////////// Antilog with base e /////////////
+        case 2:
+            cout << "Enter value: ";
+            long double antiLogValue;
+            antiLogeSmall:
+            while (!(cin >> antiLogValue))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (antiLogValue<0)
+            {
+                cout << "Value Must be greater than 0. Enter again: ";
+                goto antiLogeSmall;
+            }
+            result = pow(e, antiLogValue);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        //////////////////// Base 10 Log /////////////////
+        case 3:
+            logInput;
+            cout << "Enter value: ";
+            logBaseSmallInput:
+            while (!(cin >> logInput))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (logInput < 0)
+            {
+                cout << "Value must be greater than 0. Input again: ";
+                goto logBaseSmallInput;
+            }
+            if (logInput == 0)
+            {
+                cout << "Undefined";
+                goto mainMenu;
+            }
+            result = log10(logInput);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        /////////////// Base 10 Antilog ////////////////////////
+        case 4:
+            cout << "Enter value: ";
+            antiLog10Small:
+            while (!(cin >> antiLogValue))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (antiLogValue<0)
+            {
+                cout << "Value Must be greater than 0. Enter again: ";
+                goto antiLog10Small;
+            }
+            result = pow(10, antiLogValue);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        /////////////// Log Return to main Menu //////////////////////
+        case 5:
+            goto mainMenu;
+
+
+        /////////////// Log Invalid Input ///////////////////////
+        default:
+            cout << "Invalid Input. Choose again: ";
+            goto LogInvalid;
+
+        }
+
+
+
+    /////////////// Power ///////////////
+    case 4:
+        powerMenu:
+        cout << endl << endl;
+        cout << "               1 : Square" << endl;
+        cout << "               2 : Cube" << endl;
+        cout << "               3 : Any Power" << endl;
+        cout << "               4 : Square Root" << endl;
+        cout << "               5 : Cube root" << endl;
+        cout << "               6 : Return to main menu" << endl << endl;
+        cout << "Choose an option: ";
+        long double power, base;
+        int powerOption;
+        if (!(cin >> powerOption))
+        {
+            cout << "Invalid Option. Select again: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            goto powerMenu;
+        }
+        switch (powerOption)
+        {
+
+        ///////////////////// Square ///////////////////
+        case 1:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = pow(base, 2);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        //////////////////// Cube /////////////////////
+        case 2:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            result = pow(base, 3);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ///////////////////// Any Power ////////////////////
+        case 3:
+            cout << "Enter base no: ";
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            cout << "Enter power: ";
+            while (!(cin >> power))
+            {
+                cout << "Must be in no. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (power == 0)
+            {
+                power = 1;
+                base = 1;
+                result = pow(base,power);
+                cout << "Result: " << result;
+                goto mainMenu;
+            }
+            else
+            {
+                long int anyPower;
+                anyPower = (long int) power;
+                result = pow(base,anyPower);
+                cout << "Result: " << result;
+                goto mainMenu;
+            }
+
+        ////////////////// Square root ///////////////////
+        case 4:
+            cout << "Enter base no: ";
+            negativeRadicle:
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (base < 0)
+            {
+                cout << "Invalid Base. Must be a positive number. Enter again: ";
+                goto negativeRadicle;
+            }
+            result = sqrt(base);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+        ////////////////// Cube Root /////////////////////////
+        case 5:
+            cout << "Enter base no: ";
+            negativeCubeRadicle:
+            while (!(cin >> base))
+            {
+                cout << "Must be in numbers. Enter again: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (base < 0)
+            {
+                cout << "Invalid Base. Must be a positive number. Enter again: ";
+                goto negativeCubeRadicle;
+            }
+            result = cbrt(base);
+            cout << "Result: " << result;
+            goto mainMenu;
+
+
+
+        ////////////////// Power Return to main Menu ///////////////
+        case 6:
+            goto mainMenu;
+
+
+        ////////////////// Invalid Selection /////////////////////
+        default:
+            cout << "Invalid Selection. Select again: ";
+            goto powerMenu;
+
         }
 
 
