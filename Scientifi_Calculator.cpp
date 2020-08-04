@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <cmath>
 
-            long double degrees, radians, result;
-            long double const e = 2.71828;
+        long double degrees, radians, result;
+        long double const e = 2.71828;
 
 
 long double sum (long double a, long double b)
@@ -682,7 +682,35 @@ Trigonometric:
             goto LogInvalid;
 
         }
-        
+
+
+
+    /////////////// Power ///////////////
+    case 4:
+        cout << endl << endl;
+        long double power, base;
+        cout << "Enter base no: ";
+        while (!(cin >> base))
+        {
+            cout << "Must be in numbers. Enter again: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cout << "Enter power: ";
+        while (!(cin >> power))
+        {
+            cout << "Must be in numbers. Enter again: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        if (power == 0)
+        {
+            power = 1;
+            base = 1;
+        }
+        result = pow(base,power);
+        cout << "Result: " << result;
+        goto mainMenu;
 
 
     /////////////// Exit ////////////////
